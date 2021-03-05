@@ -1,3 +1,4 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("theme_gc() works", {
+  p <- ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) + geom_point() + theme_gc()
+  expect_true(p$theme$axis.title.y$inherit.blank)
 })
