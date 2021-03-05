@@ -1,0 +1,15 @@
+Package: gcplot2
+Title: Gives ggplots a "Good Chart" Styling
+Version: 2021.03.01
+Authors@R: 
+    person(given = "Michael",
+           family = "Silva",
+           role = c("aut", "cre"),
+           email = "mike.a.silva@gmail.com",
+           comment = c(ORCID = "0000-0001-7344-660X"))
+Description: Improves the look of ggplots by using the techniques found in "Good Charts" by Scott Berinato.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
