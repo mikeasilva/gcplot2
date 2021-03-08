@@ -13,11 +13,13 @@
 #' @import ggplot2
 theme_gc <- function(...) {
   ggplot2::theme_classic(...) %+replace% theme(
-    title = ggplot2::element_blank(),
+    plot.title = ggplot2::element_blank(),
+    plot.subtitle = ggplot2::element_blank(),
+    plot.caption = element_blank(),
     axis.line.y = ggplot2::element_blank(),
-    axis.title.x = ggplot2::element_blank(),
+    axis.title.x = element_text(size = 15),
     axis.title.y = ggplot2::element_blank(),
-    axis.text.x = ggplot2::element_text(margin = margin(20, 0, 0, 0)),
+    axis.text.x = ggplot2::element_text(margin = margin(10, 0, 0, 0)),
     axis.text.y = ggplot2::element_text(margin = margin(0, 15, 0, 0)),
     axis.ticks.length = ggplot2::unit(0.3, "cm"),
     # This is a bit of a hack.  This removes the lowest y-axis tick.  I
@@ -28,7 +30,7 @@ theme_gc <- function(...) {
                 "black", "black", "black", "black", "black", "black",
                 "black", "black", "black", "black", "black", "black",
                 "black", "black", "black", "black", "black", "black")),
-    axis.text = ggplot2::element_text(size = 15, color = "#000000"),
+    axis.text = ggplot2::element_text(size = 15),
     legend.position = "none"
   )
 }

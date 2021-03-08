@@ -4,7 +4,6 @@
 #' @param title (optional) The plot's title
 #' @param subtitle (optional) The plot's subtitle
 #' @param ylab (optional) The y-axis label
-#' @param xlab (optional) The x-axis label
 #' @param caption (optional) The caption or source line
 #' @examples
 #'\dontrun{
@@ -23,21 +22,16 @@
 #'}
 #' @export
 #' @import grid
+#' @import gridExtra
 gcplot <- function(plot,
                    title = NA,
                    subtitle = NA,
                    ylab = NA,
-                   xlab = NA,
                    caption = NA) {
+  text_grob_x <- unit(0.008, "npc")
   #heights
-  heights <- list(
-    "title" = 0,
-    "subtitle" = 0,
-    "ylab" = 0,
-    "xlab" = 0,
-    "plot" = 0,
-    "caption" = 0
-  )
+  heights <- c(0, 0, 0, 0.6, 0)
+  names(heights) <- c("title", "subtitle", "ylab", "plot", "caption")
   # Chart Title
   if (nchar(plot$labels$title) > 0 & is.na((title))) {
     title <- plot$labels$title
@@ -47,12 +41,13 @@ gcplot <- function(plot,
       title,
       gp = grid::gpar(
         fontsize = 26,
+        #fontfamily = "PT Sans Narrow",
         fontface = "bold"
-        # fontfamily = "PT Sans Narrow"),
       ),
-      just = c("left", "bottom")
+      x = text_grob_x,
+      just = c("left", "center")
     )
-    heights$title <- grid::convertUnit(grid::grobHeight(title), "mm")
+    heights["title"] <- 0.1
   }
   # Chart Subtitle
   if (nchar(plot$labels$subtitle) > 0 & is.na((subtitle))) {
@@ -63,12 +58,13 @@ gcplot <- function(plot,
       subtitle,
       gp = grid::gpar(
         fontsize = 22,
+        #fontfamily = "PT Sans Narrow",
         fontface = "bold"
-        # fontfamily = "PT Sans Narrow"),
       ),
+      x = text_grob_x,
       just = c("left", "bottom")
     )
-    heights$title <- grid::convertUnit(grid::grobHeight(subtitle), "mm")
+    heights["subtitle"] <- 0.08
   }
   # Chart Y-Axis Label
   if (nchar(plot$labels$y) > 0 & is.na(ylab)) {
@@ -79,30 +75,14 @@ gcplot <- function(plot,
       ylab,
       gp = grid::gpar(
         fontsize = 15,
+        #fontfamily = "Proxima Nova",
         col = "#000000"
-        # fontfamily = "Proxima Nova"),
       ),
-      #x = unit(TEXT_GROB_X_OFFSET, "npc"),
+      x = text_grob_x,
       just = c("left", "bottom")
     )
-    heights$ylab <- grid::convertUnit(grid::grobHeight(ylab), "mm")
-  }
-  # Chart X-Axis Label
-  if (nchar(plot$labels$x) > 0 & is.na(xlab)) {
-    xlab <- plot$labels$x
-  }
-  if (!is.na(xlab)) {
-    xlab <- grid::textGrob(
-      xlab,
-      gp = grid::gpar(
-        fontsize = 15,
-        col = "#000000"
-        # fontfamily = "Proxima Nova"),
-      ),
-      #x = unit(TEXT_GROB_X_OFFSET, "npc"),
-      just = c("left", "bottom")
-    )
-    heights$xlab <- grid::convertUnit(grid::grobHeight(xlab), "mm")
+    heights["ylab"] <- 0.03
+    #heights["plot"] <- heights["plot"] - heights["ylab"]
   }
   # Chart Caption
   if (nchar(plot$labels$caption) > 0 & is.na((caption))) {
@@ -112,17 +92,20 @@ gcplot <- function(plot,
     caption <- grid::textGrob(
       caption,
       gp = grid::gpar(
-        fontsize = 14,
-        col = "#444444"
-        # fontfamily = "Proxima Nova"),
+        fontsize = 10,
+        #fontfamily = "Proxima Nova",
+        col = "#444444",
+        fontface = "bold"
       ),
-      #x = unit(TEXT_GROB_X_OFFSET, "npc"),
+      x = text_grob_x,
       just = c("left", "bottom")
     )
-    heights$caption <- grid::convertUnit(grid::grobHeight(caption), "mm")
+    heights["caption"] <- 0.05
   }
   # Apply the good charts base theme
   plot <- plot + gcplot2::theme_gc()
   # 12% title; 8% subtitle; 75% field; 5% source
-  return(plot)
+  gridExtra::grid.arrange(title, subtitle, ylab, plot, caption, ncol = 1, heights = heights)
+  #return(heights)
+  #return(plot)
 }

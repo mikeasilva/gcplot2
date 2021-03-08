@@ -4,7 +4,7 @@
 \alias{gcplot}
 \title{Convert a ggplot into a Good Charts themed plot}
 \usage{
-gcplot(plot, title = NA, subtitle = NA, ylab = NA, xlab = NA, caption = NA)
+gcplot(plot, title = NA, subtitle = NA, ylab = NA, caption = NA)
 }
 \arguments{
 \item{plot}{A ggplot object}
@@ -14,8 +14,6 @@ gcplot(plot, title = NA, subtitle = NA, ylab = NA, xlab = NA, caption = NA)
 \item{subtitle}{(optional) The plot's subtitle}
 
 \item{ylab}{(optional) The y-axis label}
-
-\item{xlab}{(optional) The x-axis label}
 
 \item{caption}{(optional) The caption or source line}
 }

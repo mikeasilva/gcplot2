@@ -18,4 +18,5 @@ Suggests:
 Config/testthat/edition: 3
 Imports: 
     grid,
-    ggplot2
+    ggplot2,
+    gridExtra
