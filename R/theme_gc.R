@@ -5,9 +5,8 @@
 #' library(ggplot2)
 #'
 #' ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
-#'     geom_point() +
-#'     theme_gc()
-#'
+#'   geom_point() +
+#'   theme_gc()
 #' @aliases theme_good_charts
 #' @export
 #' @import ggplot2
@@ -22,11 +21,14 @@ theme_gc <- function(...) {
     # This is a bit of a hack.  This removes the lowest y-axis tick.  I
     # doubt that there will be this many tick marks in a "good chart".
     axis.ticks.y = element_line(
-      color = c("transparent", "black", "black", "black", "black", "black",
-                "black", "black", "black", "black", "black", "black",
-                "black", "black", "black", "black", "black", "black",
-                "black", "black", "black", "black", "black", "black",
-                "black", "black", "black", "black", "black", "black")),
+      color = c(
+        "transparent", "black", "black", "black", "black", "black",
+        "black", "black", "black", "black", "black", "black",
+        "black", "black", "black", "black", "black", "black",
+        "black", "black", "black", "black", "black", "black",
+        "black", "black", "black", "black", "black", "black"
+      )
+    ),
     axis.text = element_text(size = 15, color = "#000000"),
     legend.position = "none"
   )
