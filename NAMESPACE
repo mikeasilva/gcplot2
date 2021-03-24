@@ -2,6 +2,7 @@
 
 export(gcplot)
 export(theme_gc)
+export(unit_chart)
 import(ggplot2)
 import(grid)
 import(gridExtra)
