@@ -14,10 +14,11 @@ theme_gc(...)
 Good Charts Theme
 }
 \examples{
+\dontrun{
 library(ggplot2)
 
 ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
   geom_point() +
   theme_gc()
-
+}
 }

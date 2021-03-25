@@ -27,8 +27,8 @@ library(ggplot2)
 p1 <- ggplot(iris, aes(Petal.Length, Petal.Width, color = Species)) +
   geom_point() +
   labs(
-    title = "A ROSE BY ANY OTHER NAME",
-    subtitle = "IRISES PETAL ATTRIBUTE",
+    title = "IRIS PETALS TELL YOU THE SPECIES",
+    subtitle = "SETOSA IS THE SMALLEST AND VIRGINICA THE LARGEST",
     caption = "SOURCE: R.A. FISHER",
     x = "PETAL LENGTH",
     y = "PETAL WIDTH"
