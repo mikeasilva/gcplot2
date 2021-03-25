@@ -9,9 +9,9 @@ get_gc_font <- function(chart_element = NA) {
     errorCondition("You must specify what type of font you want.  Valid options are base and title.")
   }
   if (chart_element == "title") {
-    gc_fonts <- c("TT Arial", "PT Sans Narrow", "Arial Black", "Gill Sans MT Condensed", "TT Arial")
+    gc_fonts <- c("PT Sans Narrow", "Arial Black", "Gill Sans MT Condensed", "Helvetica", "TT Arial", "Arial")
   } else {
-    gc_fonts <- c("TT Arial", "Proxima Nova", "Roboto", "Segoe UI", "TT Arial")
+    gc_fonts <- c("Proxima Nova", "Roboto", "Segoe UI", "Helvetica", "TT Arial", "Arial")
   }
   if(nzchar(system.file(package = "extrafont"))) {
     my_fonts <- extrafont::fonts()
