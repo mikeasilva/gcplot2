@@ -2,6 +2,7 @@
 
 export(gcplot)
 export(get_gc_font)
+export(setup_gc_fonts)
 export(theme_gc)
 export(unit_chart)
 import(extrafont)
